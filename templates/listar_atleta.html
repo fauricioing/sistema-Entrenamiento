@@ -1,0 +1,125 @@
+{% extends 'index.html'%}
+{% load static %}
+
+
+{%block titulo%}
+Listar Atleta</title>
+
+{%endblock titulo%}
+
+{% block contenido%}
+
+
+
+
+                <div class="row">
+                    <div class="col-xl-12 d-flex">
+
+                        <div class="card flex-fill student-space comman-shadow">
+                            <div class="card-header d-flex align-items-center">
+                                <h5 class="card-title">Atleta Registrado</h5>
+                                <ul class="chart-list-out student-ellips">
+                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table
+                                        class="table star-student table-hover table-center table-borderless table-striped">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>Cedula</th>
+                                                <th>Nombre</th>
+                                                <th class="text-center">Fecha Nacimiento</th>
+                                                <th class="text-center"> Direccion</th>
+                            {% if  request.user.is_authenticated %} 
+                                {% if request.user.is_staff %}
+                              
+                                                <th class="text-end">Opciones</th>
+                                {% endif%}
+                            {% endif%}
+                     
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+
+                                                {% for dato in Atletas %}
+
+                                                <td class="text-nowrap">
+                                                    <div>{{dato.cedula}}</div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <a href="{% url 'Entrenamiento:detalle_atleta' dato.id %}">
+                                                        <img class="rounded-circle"
+                                                            src="{{ dato.imagen.url}}" width="30">
+                                                           
+                                                      {{dato}}
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">{{dato.fecha_nacimiento}}</td>
+                                                <td class="text-center">{{dato.direcion}}</td>
+                            {% if  request.user.is_authenticated %} 
+                                {% if request.user.is_staff %}
+                                                <td class="text-end">
+                                                    <div>
+                                                      <button class="badge badge-gradient-primary" onclick="editar_actividad_modal('{% url 'Entrenamiento:editar_actividads' dato.id  %}')"> <i class="fa fa-pen"></i></i> Editar </button>
+                                                    <button  type="button" class="badge badge-gradient-dark" onclick="eliminar_actividad_modal('{% url 'Entrenamiento:eliminar_actividad' dato.id  %}')"> <i class="fa fa-trash"></i> Eliminar </button>
+                                {% endif%}
+                            {% endif%}
+                     
+
+                                                    </div>
+                                                </td>
+                                                
+                                            </tr>
+                                            {%endfor%}                                                                                       
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                 
+                </div>
+	
+
+
+<div class="modal fade" id="editar" role="dialog">
+</div>
+
+
+<div class="modal fade" id="eliminar" role="dialog">
+</div>
+
+<script type="text/javascript">
+    
+function editar_actividad_modal (url){
+  
+          $('#editar').load(url , function(){
+  
+              $(this).modal("show");
+  
+          })
+  
+      }
+
+
+function eliminar_actividad_modal (url){
+  
+  $('#eliminar').load(url , function(){
+
+      $(this).modal("show");
+
+  })
+
+}
+  
+  
+</script> 
+
+		
+{% endblock contenido%}

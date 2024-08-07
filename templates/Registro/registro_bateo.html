@@ -1,0 +1,85 @@
+{% extends 'index.html'%}
+{% load static %}
+
+
+{%block titulo%}
+  Bateo 
+{%endblock titulo%}
+
+{% block contenido%}
+
+<form onsubmit=" return validar()" method="post" id="formulario" >
+    {% csrf_token %}
+
+
+<div class="row">
+<div class="col-sm-12">
+<div class="card">
+<div class="card-body">
+<form>
+<div class="row">
+<div class="col-12">
+<h5 class="form-title"><span>Bateo</span></h5>
+</div>
+<div class="col-12 col-sm-6">
+                                            <div class="form-group local-forms">
+                                                <label>Atleta <span class="login-danger">*</span></label>
+                                                    <select class="form-control select" name="nombre">
+                                                {% for  dato in object %}
+                                        <option>{{dato}}</option>
+                                                {% endfor %}
+                                            </select>
+                                            </div>
+                                        </div>
+<div class="col-12 col-sm-6">
+<div class="form-group local-forms">
+<label>Fecha<span class="login-danger">*</span></label>
+<input type="date" class="form-control" name="fecha" id="fecha">
+</div>
+</div>
+
+<div class="col-12 col-sm-3">
+<div class="form-group local-forms">
+<label>Turnos<span class="login-danger">*</span></label>
+<input type="number" class="form-control" name="turno" id="turno">
+</div>
+</div>
+<div class="col-12 col-sm-3">
+<div class="form-group local-forms">
+<label>Hits<span class="login-danger">*</span></label>
+<input type="number" class="form-control" name="hits" id="hits">
+</div>
+</div>
+<div class="col-12 col-sm-3">
+<div class="form-group local-forms">
+<label>Average<span class="login-danger">*</span></label>
+<input type="number" readonly  class="form-control" name="average" id="Average">
+</div>
+</div>
+<div class="col-12 col-sm-3">
+<div class="form-group local-forms">
+<label>Ponches<span class="login-danger">*</span></label>
+<input type="number"  class="form-control" name="ponche" id="ponche">
+</div>
+</div>
+
+</div>
+<div class="col-12">
+<div class="student-submit">
+<button type="submit" class="btn btn-primary">Enviar</button>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>    
+               
+            
+</form>
+
+<script src="{% static 'assets/javascript/validar1.js'%}">  
+</script>
+        
+{% endblock contenido%}

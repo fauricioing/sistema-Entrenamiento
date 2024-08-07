@@ -1,0 +1,109 @@
+{% extends 'index.html'%}
+
+{%block titulo%}
+
+{%endblock titulo%}
+
+{% block contenido%}
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5 class="form-title"><span>Registro Atleta</span></h5>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-group ">
+                                                <label>{{form.imagen.label}}</label>
+                                                {{form.imagen}}
+                                            </div>
+                                            <img src="{{obj.imagen.url}}">
+                                        </div>
+
+                                        
+
+                                        <div class="col-12 col-sm-6">
+                                            {% if form.cedula.errors %}
+                                            
+                                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss = "alert" aria-label = "close">
+                                            <span aria-hidden = "true">&times;</span>
+                                             </button>
+                                             <strong>Campo Invalido: </strong>{{form.cedula.errors }}
+                
+                                             </div>
+                                            {% endif %}
+                                            <div class="form-group local-forms">
+                                                <label>{{form.cedula.label}} <span class="login-danger">*</span></label>
+                                                {{form.cedula}}
+                                            </div>
+                                        </div>
+                                       
+                                        
+                                        <div class="col-12 col-sm-6">
+                                            {% if form.nombre.errors %}
+                                            
+                                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss = "alert" aria-label = "close">
+                                            <span aria-hidden = "true">&times;</span>
+                                             </button>
+                                             <strong>Campo Invalido: </strong>{{form.nombre.errors }}
+                
+                                             </div>
+                                            {% endif %}
+                                            <div class="form-group local-forms">
+                                                <label>Nombre <span class="login-danger">*</span></label>
+                                                {{form.nombre}}
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            {% if form.apellido.errors %}
+                                            
+                                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss = "alert" aria-label = "close">
+                                            <span aria-hidden = "true">&times;</span>
+                                             </button>
+                                             <strong>Campo Invalido: </strong>{{form.apellido.errors }}
+                
+                                             </div>
+                                            {% endif %}
+                                            <div class="form-group local-forms">
+                                                <label>Apellido <span class="login-danger">*</span></label>
+                                                {{form.apellido}}
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-group local-forms calendar-icon">
+                                                <label>Fecha Nacimiento <span class="login-danger">*</span></label>
+                                                {{form.fecha_nacimiento}}
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-group local-forms">
+                                                <label>Direcion <span class="login-danger">*</span></label>
+                                                {{form.direcion}}
+                                            </div>
+                                        </div>
+                                        
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="student-submit">
+                                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+</form>
+  
+		
+{% endblock contenido%}

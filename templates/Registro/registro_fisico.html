@@ -1,0 +1,89 @@
+{% extends 'index.html'%}
+{% load static %}
+
+
+{%block titulo%}
+
+{%endblock titulo%}
+
+{% block contenido%}
+
+
+<form method="post" id="formulario" onsubmit="return validar()">
+	{% csrf_token %}
+	<div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5 class="form-title"><span>Condicion Fisica</span></h5>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-group local-forms">
+                                                <label>Atleta <span class="login-danger">*</span></label>
+                   									<select class="form-control select" name="nombre" required>
+                                                    
+												{% for  dato in object %}
+										<option>{{dato}}</option>
+												{% endfor %}
+                    						</select>
+                                            </div>
+                                        </div>
+
+                                       
+
+                                    <div class="col-12 col-sm-3">
+                                        <div class="form-group local-forms">
+<label>peso<span class="login-danger">*</span></label>
+<input type="text" class="form-control" name="edad" id="edad" required>
+</div>
+</div>
+
+
+
+                                        <div class="col-12 col-sm-4">
+<div class="form-group local-forms">
+<label>Altura<span class="login-danger">*</span></label>
+<input type="text" class="form-control" name="altura" id="altura" required>
+</div>
+</div>
+                                        <div class="col-12 col-sm-4">
+                                            <div class="form-group local-forms">
+                                                <label> <span class="login-danger">*</span>tiempo_velocidad</label>
+                                                {{form.tiempo_velocidad}}
+                                            </div>
+                                        </div>
+
+                                         <div class="col-12 col-sm-6">
+                                            <div class="form-group local-forms">
+                                                <label> <span class="login-danger">*</span>fecha</label>
+                                                {{form.fecha}}
+                                            </div>
+                                        </div>
+
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <div class="col-12">
+                                            <div class="student-submit">
+                                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</form>
+
+<script src="{% static 'assets/javascript/validar3.js'%}">  
+</script>
+
+
+		
+{% endblock contenido%}

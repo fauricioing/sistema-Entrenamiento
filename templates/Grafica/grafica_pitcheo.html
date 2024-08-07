@@ -1,0 +1,120 @@
+{% extends 'index.html'%}
+{% load static %}
+{%block titulo%}
+ prueba
+{%endblock titulo%}
+
+{% block contenido%}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script src="{% static 'lib/Highcharts-10.0.0/highcharts.js' %}"></script>
+<script src="{% static 'lib/Highcharts-10.0.0/modules/data.js' %}"></script>
+<script src="{% static 'lib/Highcharts-10.0.0/modules/drilldown.js' %}"></script>
+<script src="{% static 'lib/Highcharts-10.0.0/modules/exporting.js' %}"></script>
+<script src="{% static 'lib/Highcharts-10.0.0/modules/export-data.js' %}"></script>
+<script src="{% static 'lib/Highcharts-10.0.0/modules/accessibility.js'%}"></script>
+
+
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div id="container"></div>
+        </div>
+
+        <div class="col-lg-6">
+            <div id="container2"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type="application/javascript">
+Highcharts.chart('container', {
+    chart: {
+        type: 'line'
+    },
+    title: {
+        text: 'Grafica de Pitcheo'
+    },
+    subtitle: {
+        text: 'Rendimiento por lanzamiento'
+    },
+    xAxis: {
+        categories: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+    },
+    yAxis: {
+        title: {
+            text: 'Rendimiento'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: true
+        }
+    },
+    series: [{
+        name: 'Ponche',
+        data: {{ponche|safe}}
+    }, {
+        name: 'lanzamiento Strick',
+        data: {{porcentaje_strick|safe}}
+    },
+    {
+        name: 'lanzamiento bola',
+        data: {{porcentaje_bolas|safe}}
+    }]
+});
+
+
+Highcharts.chart('container2', {
+    chart: {
+        type: 'line'
+    },
+    title: {
+        text: 'Grafica de tipo de Lanzamiento'
+    },
+    subtitle: {
+        text: 'cantida de lanzamiento'
+    },
+    xAxis: {
+        categories: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+    },
+    yAxis: {
+        title: {
+            text: 'Rendimiento'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: true
+        }
+    },
+    series: [{
+        name: 'Recta',
+        data: {{recta|safe}}
+    }, {
+        name: 'Curva',
+        data: {{curva|safe}}
+    },
+    {
+        name: 'Cambio',
+        data: {{Cambio|safe}}
+    }]
+});
+
+
+</script>
+
+        
+{% endblock contenido%}

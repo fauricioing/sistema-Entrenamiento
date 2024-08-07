@@ -1,0 +1,121 @@
+{% extends 'index.html'%}
+{% load static %}
+{%block titulo%}
+Pitcheo
+{%endblock titulo%}
+
+{% block contenido%}
+
+
+<form  onsubmit="return validar2()" method="post" id="formulario">
+    {% csrf_token %}
+
+
+<div class="row">
+<div class="col-sm-12">
+<div class="card">
+<div class="card-body">
+<form>
+<div class="row">
+<div class="col-12">
+<h5 class="form-title"><span>Pitcheo</span></h5>
+</div>
+<div class="col-12 col-sm-6">
+                                            <div class="form-group local-forms">
+                                                <label>Atleta <span class="login-danger">*</span></label>
+                                                    <select class="form-control select" name="nombre">
+                                                {% for  dato in object %}
+                                        <option>{{dato}}</option>
+                                                {% endfor %}
+                                            </select>
+                                            </div>
+                                        </div>
+
+<div class="col-12 col-sm-6">
+<div class="form-group local-forms">
+<label>Fecha<span class="login-danger">*</span></label>
+<input type="date" class="form-control" name="fecha" id="fecha">
+</div>
+</div>
+
+
+<div class="col-12 col-sm-3">
+<div class="form-group local-forms">
+<label>Cantidad de Lazamiento <span class="login-danger">*</span></label>
+<input type="number" class="form-control" name="cantidad" id="cantidad">
+</div>
+</div>
+<div class="col-12 col-sm-3">
+<div class="form-group local-forms">
+<label>Cantidad de strick <span class="login-danger">*</span></label>
+<input type="number" class="form-control" name="cant_strick" id="cant_strick">
+</div>
+</div>
+<div class="col-12 col-sm-3">
+<div class="form-group local-forms">
+<label>Cantidad de bolas <span class="login-danger">*</span></label>
+<input type="number" class="form-control" name="cant_bolas" id="cant_bolas">
+</div>
+</div>
+
+
+<div class="col-12 col-sm-3">
+<div class="form-group local-forms">
+<label>Cambio<span class="login-danger">*</span></label>
+<input type="number" class="form-control" name="cambio" id="cambio">
+</div>
+</div>
+
+<div class="col-12 col-sm-3">
+<div class="form-group local-forms">
+<label>Curva<span class="login-danger">*</span></label>
+<input type="number" class="form-control" name="curvas" id="curvas">
+</div>
+</div>
+
+<div class="col-12 col-sm-3">
+<div class="form-group local-forms">
+<label>Rectas<span class="login-danger">*</span></label>
+<input type="number" class="form-control" name="rectas" id="rectas">
+</div>
+</div>
+<div class="col-12 col-sm-3">
+<div class="form-group local-forms">
+<label>ponche<span class="login-danger">*</span></label>
+<input type="number" class="form-control" name="ponche" id="cant_recta">
+</div>
+</div>
+<div class="col-12 col-sm-4">
+<div class="form-group local-forms">
+<label>porcentaje de strick <span class="login-danger">*</span></label>
+<input type="number" readonly class="form-control" name="porcentaje_strick" id="porcentaje_strick">
+</div>
+</div>
+<div class="col-12 col-sm-4">
+<div class="form-group local-forms">
+<label>porcentaje de bolas <span class="login-danger">*</span></label>
+<input type="text" readonly class="form-control" name="porcentaje_bolas" id="porcentaje_bolas">
+</div>
+</div>
+<div class="col-12">
+<div class="student-submit">
+<button type="submit" class="btn btn-primary">Enviar</button>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>    
+               
+            
+</form>
+
+<script src="{% static 'assets/javascript/validar2.js'%}">  
+</script>
+
+
+<
+        
+{% endblock contenido%}

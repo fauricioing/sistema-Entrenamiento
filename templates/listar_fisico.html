@@ -1,0 +1,93 @@
+{% extends 'index.html'%}
+{% load static %}
+{%block titulo%}
+Condicion Fisica
+{%endblock titulo%}
+
+{% block contenido%}
+<div class="container-fluid">
+<div class="row">
+<div class="col-lg-12">
+<div class="card">
+<div class="card-body">
+<h5 class="card-title d-flex justify-content-between">
+<span>Condicio Fisica</span>
+<a class="btn btn-primary" href="{% url 'Entrenamiento:grafica_fisico' object.id %}"><i class="far fa-edit me-1"></i>Grafico</a>
+</h5>
+<div class="row">
+<div class="col-xl-12 d-flex">
+
+                        <div class="card flex-fill student-space comman-shadow">
+                            <div class="card-header d-flex align-items-center">
+                                <h5 class="card-title"><img class="rounded-circle"src="{{ dato.imagen.url}}" width="30">{{object}}</h5>
+                                <ul class="chart-list-out student-ellips">
+                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table
+                                        class="table star-student table-hover table-center table-borderless table-striped">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th class="text-center">Fecha</th>
+                                                <th class="text-center">Peso</th>
+                                                <th class="text-center">Altura</th>
+                                                <th class="text-center">Velocidad</th>
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+
+                                                {% for dato in info %}
+
+                                                <td class="text-nowrap text-center">
+                                                    <div>{{dato.fecha}}</div>
+                                                </td>
+                                                <td class="text-nowrap text-center ">       
+                                                      {{dato.peso}}
+                                                </td>
+                                                <td class="text-center">{{dato.altura}}</td>
+                                                <td class="text-center">{{dato.tiempo_velocidad}}</td>
+                                                <td class="text-center">{{dato.avg}}</td>
+                                                <td class="text-end">
+                                                    <div></div>
+                                                </td>
+                                            </tr>
+                                            {%endfor%}                                                                                       
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                 
+
+                </div>
+
+                 
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+</div>
+   
+
+    
+</div>
+
+
+
+
+       
+{% endblock contenido%}
